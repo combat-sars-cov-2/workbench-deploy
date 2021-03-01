@@ -13,7 +13,7 @@ services:
 
   irida_web:
     restart: always
-    image: quay.io/combat-tb/irida:v0.1.3
+    image: quay.io/combat-sars-cov-2/irida:v0.1.3
     # build:
     #   context: ./docker-svc/irida
     #   dockerfile: Dockerfile
@@ -44,13 +44,13 @@ services:
 
   irida_galaxy:
     restart: always
-    image: quay.io/combat-tb/galaxy:v0.1.3
+    image: quay.io/combat-sars-cov-2/galaxy:v0.1.3
     # build:
     #   context: ./docker-svc/galaxy
     #   dockerfile: Dockerfile
     container_name: irida_galaxy
     environment:
-      GALAXY_CONFIG_BRAND: "COMBAT-TB Workbench"
+      GALAXY_CONFIG_BRAND: "combat-sars-cov-2 Workbench"
       # PROXY_PREFIX: /galaxy
       # GALAXY_CONFIG_NGINX_X_ACCEL_REDIRECT_BASE: /galaxy/_x_accel_redirect
       # GALAXY_CONFIG_NGINX_X_ARCHIVE_FILES_BASE: /galaxy/_x_accel_redirect

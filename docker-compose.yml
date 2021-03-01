@@ -35,7 +35,7 @@ services:
       dockerfile: Dockerfile
     container_name: irida_galaxy
     environment:
-      GALAXY_CONFIG_BRAND: "COMBAT-TB Workbench"
+      GALAXY_CONFIG_BRAND: "COMBAT-SARS-COV-2 Workbench"
       GALAXY_LOGGING: full
     volumes:
       - irida_web_data:/data/irida

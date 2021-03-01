@@ -1,9 +1,9 @@
 # docker-irida-galaxy
 
  A Dockerized IRIDA-Galaxy installation configured to be deployed on a single instance/VM.
-<!--
-:whale: [![Docker Repository on Quay](https://quay.io/repository/combat-tb/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/irida) :whale: [![Docker Repository on Quay](https://quay.io/repository/combat-tb/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/irida)
--->
+
+:whale: [![Docker Repository on Quay](https://quay.io/repository/combat-sars-cov-2/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-sars-cov-2/irida) :whale: [![Docker Repository on Quay](https://quay.io/repository/combat-sars-cov-2/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-sars-cov-2/irida)
+
 ## Up and running
 
 ### Prerequisites

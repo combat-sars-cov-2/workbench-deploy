@@ -1,5 +1,5 @@
 FROM tomcat:latest
-LABEL Maintainer="combat-tb-help@sanbi.ac.za"
+LABEL Maintainer="combat-sars-cov-2-help@sanbi.ac.za"
 
 ARG USER=galaxy
 ARG UID=1450
@@ -59,8 +59,8 @@ COPY nginx-config /etc/nginx/sites-available/default
 COPY start-daemons.sh /usr/local/bin/start-daemons.sh
 RUN chmod a+x /usr/local/bin/start-daemons.sh
 
-RUN wget -P /etc/irida/plugins https://github.com/COMBAT-TB/irida-plugin-tb-sample-report/releases/download/0.3.1/tb-sample-report-pipeline-plugin-0.3.1.jar
-RUN wget -P /etc/irida/plugins https://github.com/COMBAT-TB/irida-plugin-tb-phylogeny/releases/download/0.1.4/tb-phylogeny-pipeline-plugin-0.1.4.jar
+RUN wget -P /etc/irida/plugins https://github.com/combat-sars-cov-2/irida-plugin-tb-sample-report/releases/download/0.3.1/tb-sample-report-pipeline-plugin-0.3.1.jar
+RUN wget -P /etc/irida/plugins https://github.com/combat-sars-cov-2/irida-plugin-tb-phylogeny/releases/download/0.1.4/tb-phylogeny-pipeline-plugin-0.1.4.jar
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 

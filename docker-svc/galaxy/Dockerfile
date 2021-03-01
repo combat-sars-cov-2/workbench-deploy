@@ -1,5 +1,5 @@
 FROM quay.io/bgruening/galaxy:20.09
-LABEL Maintainer="combat-tb-help@sanbi.ac.za"
+LABEL Maintainer="combat-sars-cov-2-help@sanbi.ac.za"
 
 WORKDIR /galaxy-central
 
@@ -8,7 +8,7 @@ RUN apt update && apt install -y netcat-openbsd
 RUN add-tool-shed --url 'http://testtoolshed.g2.bx.psu.edu/' --name 'Test Tool Shed'; \
 	add-tool-shed --url 'https://irida.corefacility.ca/galaxy-shed/' --name 'IRIDA Tool Shed'
 
-ENV GALAXY_CONFIG_BRAND="COMBAT-TB Workbench" \
+ENV GALAXY_CONFIG_BRAND="COMBAT-SARS-COV-2 Workbench" \
 	GALAXY_CONFIG_CONDA_ENSURE_CHANNELS="iuc,conda-forge,bioconda,defaults" 
 
 RUN sed -i -e 's/# *admin_users: .*/admin_users: admin@galaxy.org/' /etc/galaxy/galaxy.yml; \
@@ -18,7 +18,7 @@ RUN sed -i -e 's/# *admin_users: .*/admin_users: admin@galaxy.org/' /etc/galaxy/
 # Adding the tool definitions and data manager to the container
 COPY combattb-tools.yml snpeff_data_manager.yml $GALAXY_ROOT/
 
-# Install Combact-TB Tools
+# Install Combat-SARS-COV-2 Tools
 RUN install-tools $GALAXY_ROOT/combattb-tools.yml && \
     /tool_deps/_conda/bin/conda clean --tarballs --yes > /dev/null && \
     rm /export/galaxy-central/ -rf && \
