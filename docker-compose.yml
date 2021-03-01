@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+  irida_web:
+    restart: always
+    build:
+      context: ./docker-svc/irida
+      dockerfile: Dockerfile
+    container_name: irida_web
+    depends_on:
+      - irida_mysql
+    ports:
+      - "80:80"
+    volumes:
+      - irida_web_data:/data/irida
+
+  irida_mysql:
+    restart: always
+    image: mariadb:10.5.6
+    container_name: irida_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpasswd
+      MYSQL_DATABASE: irida_db
+      MYSQL_USER: irida_user
+      MYSQL_PASSWORD: irida_passwd
+    volumes:
+      - irida_mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  irida_galaxy:
+    restart: always
+    build:
+      context: ./docker-svc/galaxy
+      dockerfile: Dockerfile
+    container_name: irida_galaxy
+    environment:
+      GALAXY_CONFIG_BRAND: "COMBAT-TB Workbench"
+      GALAXY_LOGGING: full
+    volumes:
+      - irida_web_data:/data/irida
+      - irida_galaxy_data:/export
+    ports:
+      - "9090:80"
+      - "21:21"
+      - "8800:8800"
+      - "9002:9002"
+    
+volumes:
+  irida_mysql_data:
+  irida_web_data:
+  irida_galaxy_data:
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
