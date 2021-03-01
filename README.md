@@ -1,9 +1,9 @@
 # docker-irida-galaxy
 
  A Dockerized IRIDA-Galaxy installation configured to be deployed on a single instance/VM.
-
+<!--
 :whale: [![Docker Repository on Quay](https://quay.io/repository/combat-tb/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/irida) :whale: [![Docker Repository on Quay](https://quay.io/repository/combat-tb/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-tb/irida)
-
+-->
 ## Up and running
 
 ### Prerequisites
@@ -33,7 +33,7 @@ ssh USER@REMOTE.SERVER
 ```
 
 ```sh
-git clone https://github.com/COMBAT-TB/irida-galaxy-deploy.git ; cd irida-galaxy-deploy
+git clone https://github.com/COMBAT-SARS-COV-2/irida-galaxy-deploy.git ; cd irida-galaxy-deploy
 ```
 
 ```sh
@@ -57,21 +57,6 @@ The default administrator **username and password** are:
 
 Upon setup completion, from within the [IRIDA ToolShed][irida-toolshed] in Galaxy, please find and verify if the following tools are installed in Galaxy:
 
-- bcftools_consensus
-- fastp
-- iqtree
-- multiqc
-- snippy
-- snpeff
-- text_processing
-- data_manager_snpeff
-- fastqc
-- snp_dists
-- snp_sites
-- tb_variant_filter
-- tbprofiler
-- tbvcfreport
-- trimmomatic
 - [suite_snvphyl_1_0_1][suite_snvphyl_1_0_1]
 
 If you want to import sequence data from IRIDA to Galaxy, install:
