@@ -1,9 +1,11 @@
-FROM quay.io/bgruening/galaxy:20.09
+FROM quay.io/bgruening/galaxy:20.05
 LABEL Maintainer="combat-sars-cov-2-help@sanbi.ac.za"
 
 WORKDIR /galaxy-central
 
-RUN apt update && apt install -y netcat-openbsd
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+
+RUN apt update && apt install -y netcat-openbsd apt-utils curl
 
 RUN add-tool-shed --url 'http://testtoolshed.g2.bx.psu.edu/' --name 'Test Tool Shed'; \
 	add-tool-shed --url 'https://irida.corefacility.ca/galaxy-shed/' --name 'IRIDA Tool Shed'
@@ -16,11 +18,11 @@ RUN sed -i -e 's/# *admin_users: .*/admin_users: admin@galaxy.org/' /etc/galaxy/
 	sed -i -e 's/# *conda_ensure_channels: .*/conda_ensure_channels: iuc,conda-forge,bioconda,defaults/' /etc/galaxy/galaxy.yml
 
 # Adding the tool definitions and data manager to the container
-COPY combattb-tools.yml snpeff_data_manager.yml $GALAXY_ROOT/
+COPY combat-sars-cov-2-tools.yml primer_scheme_data_manager.yml $GALAXY_ROOT/
 
 # Install Combat-SARS-COV-2 Tools
-RUN install-tools $GALAXY_ROOT/combattb-tools.yml && \
-    /tool_deps/_conda/bin/conda clean --tarballs --yes > /dev/null && \
+RUN install-tools $GALAXY_ROOT/combat-sars-cov-2-tools.yml && \
+	/tool_deps/_conda/bin/conda clean --tarballs --yes > /dev/null && \
     rm /export/galaxy-central/ -rf && \
     mkdir -p $GALAXY_HOME/workflows
 
@@ -31,11 +33,11 @@ RUN usermod -a -G root galaxy
 RUN /tool_deps/_conda/bin/conda install ephemeris
 RUN startup_lite && \
 	/tool_deps/_conda/bin/run-data-managers -u admin@galaxy.org -p $GALAXY_DEFAULT_ADMIN_PASSWORD \
-        -g http://localhost:8080 --config snpeff_data_manager.yml
+        -g http://localhost:8080 --config primer_scheme_data_manager.yml
 
 # Container Style
 COPY *.png welcome.html $GALAXY_CONFIG_DIR/web/
 
 COPY galaxy.patch /tmp/galaxy.patch
 RUN apt install -y patch
-RUN cd / && patch -p1 </tmp/galaxy.patch
+#RUN cd / && patch -p1 </tmp/galaxy.patch

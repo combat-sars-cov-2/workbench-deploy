@@ -59,9 +59,10 @@ COPY nginx-config /etc/nginx/sites-available/default
 COPY start-daemons.sh /usr/local/bin/start-daemons.sh
 RUN chmod a+x /usr/local/bin/start-daemons.sh
 
-RUN wget -P /etc/irida/plugins https://github.com/combat-sars-cov-2/irida-plugin-tb-sample-report/releases/download/0.3.1/tb-sample-report-pipeline-plugin-0.3.1.jar
-RUN wget -P /etc/irida/plugins https://github.com/combat-sars-cov-2/irida-plugin-tb-phylogeny/releases/download/0.1.4/tb-phylogeny-pipeline-plugin-0.1.4.jar
+#install the irida plugin
+RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-pipeline-plugins/releases/download/0.1.1/artic_nanopore-0.1.0.jar
+RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-pipeline-plugins/releases/download/0.1.1/artic_illumina-0.1.0.jar
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-CMD ["./wait-for-it.sh", "irida_mysql:3306", "--", "/usr/local/bin/start-daemons.sh"]
+CMD ["./wait-for-it.sh", "irida_mysql:33060", "--", "/usr/local/bin/start-daemons.sh"]
