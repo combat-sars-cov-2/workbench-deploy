@@ -1,8 +1,15 @@
-# docker-irida-galaxy
+# COMBAT-SARS-CoV-2 Workbench
 
- A Dockerized IRIDA-Galaxy installation configured to be deployed on a single instance/VM.
+The COMBAT-SARS-CoV-2 Workbench is a all-included environment for SARS-CoV-2 genome data analysis. Users can load data and metadata,
+and run analyses including:
 
-:whale: [![Docker Repository on Quay](https://quay.io/repository/combat-sars-cov-2/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-sars-cov-2/irida) :whale: [![Docker Repository on Quay](https://quay.io/repository/combat-sars-cov-2/irida/status "Docker Repository on Quay")](https://quay.io/repository/combat-sars-cov-2/irida)
+1. genome consensus reconstruction
+2. variant identification
+3. SARS-CoV-2 lineage typing (with pangolin) and clade typing (with nextclade)
+
+Data generated from these analyses can be used downstream or shared with databases like GISAID or NCBI's Genbank.
+
+The workbench uses Docker and docker compose to hide the complexity of the software.
 
 ## Up and running
 
@@ -45,32 +52,10 @@ docker-compose -f stack.yml up -d
 
 Upon completion, point your browser to:
 
-- [REMOTE.SERVER:8080/irida/](http://REMOTE.SERVER:8080/irida/) to access IRIDA
-- [REMOTE.SERVER:9090](http://REMOTE.SERVER:9090/) to access Galaxy
+- [REMOTE.SERVER:8080/irida/](http://REMOTE.SERVER) to access the main web interface
+- [REMOTE.SERVER:9090](http://REMOTE.SERVER:9090/) to access the Galaxy workflow execution environment
 
 The default administrator **username and password** are:
 
-- **`admin:password1`** for IRIDA
+- **`admin:password1`** for the main (IRIDA-based) web interface
 - **`admin:admin`** for Galaxy
-
-### Install or Verfiy IRIDA Tools
-
-Upon setup completion, from within the [IRIDA ToolShed][irida-toolshed] in Galaxy, please find and verify if the following tools are installed in Galaxy:
-
-- [suite_snvphyl_1_0_1][suite_snvphyl_1_0_1]
-
-If you want to import sequence data from IRIDA to Galaxy, install:
-
-- [irida_galaxy_importer][irida-importer-irida-toolshed]
-  - **NB: Please follow from [tool-connection-configuration] to configure [irida_galaxy_importer][irida-importer-irida-toolshed]**.
-
-Once installed, you should see them show up in your list of installed tools (**Admin > Mange tools**).
-
-### Deploying to OpenStack
-
-*Please see [openstack-terraform](openstack-terraform/) to deploy to OpenStack using Terraform.*
-
-[irida-importer-irida-toolshed]: http://irida.corefacility.ca/galaxy-shed/view/irida/irida_galaxy_importer/d82238b091f2
-[suite_snvphyl_1_0_1]: https://irida.corefacility.ca/galaxy-shed/view/nml/suite_snvphyl_1_0_1/4841b7148c44
-[irida-toolshed]: https://irida.corefacility.ca/galaxy-shed
-[tool-connection-configuration]: https://github.com/phac-nml/irida-galaxy-importer#22-tool-connection-configuration
