@@ -83,3 +83,27 @@ tools:
     revisions:
       - "ddf54b12c295"
     tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"
+  - name: "pangolin"
+    owner: "iuc"
+    tool_shed_url: "toolshed.g2.bx.psu.edu"
+    revisions:
+      - "514a786baaa9"
+    tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"
+  - name: "nextclade"
+    owner: "iuc"
+    tool_shed_url: "toolshed.g2.bx.psu.edu"
+    revisions:
+      - "495c19a62538"
+    tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"
+  - name: "qc"
+    owner: "sanbi-uwc"
+    tool_shed_url: "testtoolshed.g2.bx.psu.edu"
+    revisions:
+      - "499b71c93c5d"
+    tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"
+  - name: "qc"
+    owner: "sanbi-uwc"
+    tool_shed_url: "testtoolshed.g2.bx.psu.edu"
+    revisions:
+      - "499b71c93c5d"
+    tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"
