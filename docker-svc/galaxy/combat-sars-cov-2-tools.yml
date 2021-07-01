@@ -107,3 +107,15 @@ tools:
     revisions:
       - "499b71c93c5d"
     tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"
+  - name: "jvarkit_wgscoverageplotter "
+    owner: "iuc"
+    tool_shed_url: "toolshed.g2.bx.psu.edu"
+    revisions:
+      - "ac048a34cac3"
+    tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"
+  - name: "samtool_filter2"
+    owner: "devteam"
+    tool_shed_url: "toolshed.g2.bx.psu.edu"
+    revisions:
+      - "649a225999a5"  
+    tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-ILLUMINA"

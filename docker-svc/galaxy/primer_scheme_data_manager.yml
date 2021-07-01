@@ -12,5 +12,19 @@ data_managers:
         - SARS-CoV-2-ARTICv3
       # Name of the data-tables you want to reload after your DM are finished. This can be important for subsequent data managers
       data_table_reload:
-        - primer_scheme_bedfiles
- 
+        - primer_scheme_bedfiles 
+    
+    # # Data manager ID
+    # - id: toolshed.g2.bx.psu.edu/repos/iuc/data_manager_pangolearn/data_manager_pangolearn/0.0.2 
+    #   # tool parameters, nested parameters should be specified using a pipe (|)
+    #   params:
+    #     - 'genome_version': '{{ item }}'
+    #   # Items refere to a list of variables you want to run this data manager. You can use them inside the param field with {{ item }}
+    #   # In case of genome for example you can run this DM with multiple genomes, or you could give multiple URLs.
+    #   items:
+    #     - SARS-CoV-2-ARTICv1
+    #     - SARS-CoV-2-ARTICv2
+    #     - SARS-CoV-2-ARTICv3
+    #   # Name of the data-tables you want to reload after your DM are finished. This can be important for subsequent data managers
+    #   data_table_reload:
+    #     - primer_scheme_bedfiles
