@@ -17,3 +17,6 @@
 # temp
 exporter-config.ini
 my_tools.xml
+
+docker-svc/galaxy/galaxy-tools.yml
+docker-svc/irida/workflows/
