@@ -32,7 +32,7 @@ RUN set -ex; \
 	gosu nobody true;
 
 ENV	IRIDA_DOWNLOAD_URL="https://github.com/phac-nml/irida/releases/download/" \
-	IRIDA_VERSION="21.01" \
+	IRIDA_VERSION="21.05" \
 	IRIDA_DATA_DIR=/data/irida \
 	JAVA_OPTS="-Dspring.profiles.active=prod -Dirida.db.profile=prod" \
 	GALAXY_ADMIN_USER="admin@galaxy.org"
@@ -60,8 +60,8 @@ COPY start-daemons.sh /usr/local/bin/start-daemons.sh
 RUN chmod a+x /usr/local/bin/start-daemons.sh
 
 #install the irida plugin
-RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-pipeline-plugins/releases/download/0.1.1/artic_nanopore-0.1.0.jar
-RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-pipeline-plugins/releases/download/0.1.1/artic_illumina-0.1.0.jar
+RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-pipeline-plugins/releases/download/v0.1.0/artic_nanopore-0.1.0.jar
+COPY workflows/* /etc/irida/plugins
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
