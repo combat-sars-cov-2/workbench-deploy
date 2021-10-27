@@ -63,7 +63,7 @@ RUN chmod a+x /usr/local/bin/start-daemons.sh
 RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-plugin-sars-cov-2-nanopore/releases/download/0.1.4/sarscov2-artic-nanopore-pipeline-plugin-0.1.4.jar
 RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-plugin-sars-cov-2-illumina/releases/download/0.1.8/sarscov2-artic-illumina-pipeline-plugin-0.1.8.jar
 
-COPY workflows/* /etc/irida/plugins
+#COPY workflows/* /etc/irida/plugins
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
