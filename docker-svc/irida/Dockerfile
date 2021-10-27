@@ -25,7 +25,7 @@ RUN set -ex; \
 	wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch"; \
 	wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc"; \
 	export GNUPGHOME="$(mktemp -d)"; \
-	gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; \
+	gpg --keyserver keyserver.ubuntu.com --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; \
 	gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; \
 	rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc; \
 	chmod +x /usr/local/bin/gosu; \
@@ -59,8 +59,10 @@ COPY nginx-config /etc/nginx/sites-available/default
 COPY start-daemons.sh /usr/local/bin/start-daemons.sh
 RUN chmod a+x /usr/local/bin/start-daemons.sh
 
-#install the irida plugin
-RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-pipeline-plugins/releases/download/v0.1.0/artic_nanopore-0.1.0.jar
+#install the irida plugins
+RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-plugin-sars-cov-2-nanopore/releases/download/0.1.4/sarscov2-artic-nanopore-pipeline-plugin-0.1.4.jar
+RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-plugin-sars-cov-2-illumina/releases/download/0.1.8/sarscov2-artic-illumina-pipeline-plugin-0.1.8.jar
+
 COPY workflows/* /etc/irida/plugins
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
