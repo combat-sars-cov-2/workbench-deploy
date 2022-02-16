@@ -2,17 +2,17 @@ version: "3.7"
 
 services:
   irida_web:
-    restart: always
-    build:
-      context: ./docker-svc/irida
-      dockerfile: Dockerfile
-    container_name: irida_web
-    depends_on:
-      - irida_mysql
-    ports:
-      - "80:80"
-    volumes:
-      - irida_web_data:/data/irida
+   restart: always
+   build:
+     context: ./docker-svc/irida
+     dockerfile: Dockerfile
+   container_name: irida_web
+   depends_on:
+     - irida_mysql
+   ports:
+     - "80:80"
+   volumes:
+     - irida_web_data:/data/irida
 
   irida_mysql:
     restart: always

@@ -33,7 +33,7 @@ This setup was tested on a VM with the following specs.
 - You have [`docker`](https://docs.docker.com/install/) and [`docker-compose`](https://docs.docker.com/compose/) installed on destination instance/VM.
 
 >#### NOTE:
->You can use [scripts](scripts/) to install docker and deploy this stack.
+>You can use [scripts](scripts) to install docker and deploy this stack.
 
 ```sh
 ssh USER@REMOTE.SERVER
@@ -59,3 +59,28 @@ The default administrator **username and password** are:
 
 - **`admin:password1`** for the main (IRIDA-based) web interface
 - **`admin:admin`** for Galaxy
+
+## Openstack platform installation
+
+Workbench code is in GitHub - pvanheus/docker-galaxy-stable
+
+### 1. Checkout the galaxy docker repository
+```sh
+git clone https://github.com/pvanheus/docker-galaxy-stable
+cd docker-galaxy-stable/compose
+docker-compose -f docker-compose.yml -f docker-compose.singularity.yml -f docker-compose.irida.yml up
+```
+
+### 2. Install the workflows & tools
+
+```shell
+cd docker-galaxy-stable/compose/galaxy-configurator/templates/irida/plugins
+jar tf galaxy-configurator/templates/irida/plugins/sarscov2-artic-illumina-pipeline-plugin-0.1.10.jar
+shed-tools install -g http://localhost:90 -a fakekey -t tools.yml
+```
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-FROM tomcat:latest
+FROM tomcat:9.0
 LABEL Maintainer="combat-sars-cov-2-help@sanbi.ac.za"
 
 ARG USER=galaxy
@@ -10,7 +10,7 @@ ARG PW=galaxy
 RUN apt-get update; \
 	apt-get -y upgrade; \
 	apt-get install -f ; \
-	apt-get install perl fastqc nginx-full -y; \
+	apt-get install perl fastqc wget gpg nginx-full -y; \
 	rm -rf /var/lib/apt/lists/*; \
 	mkdir -p /etc/irida/plugins
 
@@ -32,7 +32,7 @@ RUN set -ex; \
 	gosu nobody true;
 
 ENV	IRIDA_DOWNLOAD_URL="https://github.com/phac-nml/irida/releases/download/" \
-	IRIDA_VERSION="21.09.1" \
+	IRIDA_VERSION="21.09" \
 	IRIDA_DATA_DIR=/data/irida \
 	JAVA_OPTS="-Dspring.profiles.active=prod -Dirida.db.profile=prod" \
 	GALAXY_ADMIN_USER="admin@galaxy.org"
@@ -62,8 +62,6 @@ RUN chmod a+x /usr/local/bin/start-daemons.sh
 #install the irida plugins
 RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-plugin-sars-cov-2-nanopore/releases/download/0.1.4/sarscov2-artic-nanopore-pipeline-plugin-0.1.4.jar
 RUN wget -P /etc/irida/plugins https://github.com/COMBAT-SARS-COV-2/irida-plugin-sars-cov-2-illumina/releases/download/0.1.8/sarscov2-artic-illumina-pipeline-plugin-0.1.8.jar
-
-#COPY workflows/* /etc/irida/plugins
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
