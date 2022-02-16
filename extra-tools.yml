@@ -1,13 +1,7 @@
 tools:
-  - name: "artic_minion"
+  - name: "data_manager_primer_scheme_bedfiles"
     owner: "iuc"
     tool_shed_url: "toolshed.g2.bx.psu.edu"
     revisions:
-      - "a346730e5552"
-    tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-MINION"
-  - name: "artic_guppyplex"
-    owner: "sanbi-uwc"
-    tool_shed_url: "testtoolshed.g2.bx.psu.edu"
-    revisions:
-      - "fce0e2325022"
+      - "157a5c9ea72a"
     tool_panel_section_label: "COMBAT-SARS-COV-2::ARTIC-MINION"
