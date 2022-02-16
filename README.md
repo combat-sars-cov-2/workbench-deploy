@@ -76,7 +76,7 @@ docker-compose -f docker-compose.yml -f docker-compose.singularity.yml -f docker
 ```shell
 cd docker-galaxy-stable/compose/galaxy-configurator/templates/irida/plugins
 jar tf galaxy-configurator/templates/irida/plugins/sarscov2-artic-illumina-pipeline-plugin-0.1.10.jar
-shed-tools install tools.yaml
+shed-tools install -g http://localhost:90 -a fakekey -t tools.yml
 ```
 
 
